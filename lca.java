@@ -1,4 +1,3 @@
-//from geek for geeks
 import java.util.ArrayList; 
 import java.util.List; 
   
