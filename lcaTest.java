@@ -3,9 +3,8 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-
-
 @RunWith(JUnit4.class)
+    
 public class lcaTest {
     @Test 
     public void testLCA(){
@@ -20,4 +19,23 @@ public class lcaTest {
 
         assertEquals("LCA (5,7) is 1",1, tree.findLCA(5,7));
     }
+
+    @Test
+	public void testEmptyTree() {
+		lca tree =new lca();
+	
+		assertEquals("LCA (1,2)=-1",-1, tree.findLCA(1,2));
+	}
+
+    @Test
+	public void testEmptyNode() {
+		lca tree =new lca();
+        tree.root=new Node(1);
+        tree.root.left=new Node(2);
+        tree.root.right=new Node(3);
+		
+		assertEquals("LCA of (1,4) is -1 ",-1, tree.findLCA(1,5));
+		
+	}
+
 }
