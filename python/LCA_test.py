@@ -40,4 +40,4 @@ class LCATest(TestCase):
         root.right.right.right = Node(5)
         root.right.right.right.right = Node(6)
         self.assertEqual(findLCA(root, 1,5),1, "LCA (1,5)=1")
-        self.assertEqual(findLCA(root, 2,3),2, "LCA (2,3)=2")
+        self.assertEqual(findLCA(root, 2,3),1, "LCA (2,3)=2")
