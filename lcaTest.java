@@ -73,7 +73,37 @@ public class lcaTest {
 	}
 
 	////////DAG Tests
+	@Test
+	public void testDAGwithLCA() {
 
+/*
+			1
+		/		\
+		2		3
+	/		\
+	4	--	5
+				\
+				6
+	
+			expects that lca for 4,5 is 4 NOT 2	
+
+
+*/
+
+		lca tree =new lca();
+        tree.root=new Node(1);
+        tree.root.left=new Node(2);
+        tree.root.right=new Node(3);
+		tree.root.left.left = new Node(4);
+		tree.root.left.right = new Node (5);
+		tree.root.left.left.right=new Node(5);
+		tree.root.left.right.right = new Node (6);
+	
+		assertEquals("LCA (4,6) = 5",5, tree.findLCA(4,6));
+
+		//expected 5 but actually 2 for this test.
+
+	}
 	
 
 }
