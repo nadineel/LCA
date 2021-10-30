@@ -74,8 +74,8 @@ public class lcaTest {
 
 	////////DAG Tests
 	@Test
-	public void testDAGwithLCA() {
-
+	public void testDAGwithOldLCA() {
+//NOT WORKING
 /*
 			1
 		/		\
@@ -103,6 +103,45 @@ public class lcaTest {
 
 		//expected 5 but actually 2 for this test.
 
+	}
+
+	@Test
+	public void testDAGNew(){
+		DAG tree=new DAG(6);
+
+/*
+			0
+		/		\
+		1		2
+	/		\
+	3	--	4
+				\
+				5
+*/		
+		tree.addEdge(0, 1);
+		tree.addEdge(0, 2);
+		tree.addEdge(1, 3);
+		tree.addEdge(1, 4);
+		tree.addEdge(3, 4);
+		tree.addEdge(4, 5);
+		
+		assertEquals("LCA (3,4) = 3",3, tree.findLCA(0,3,4));
+		assertEquals("LCA (3,5) = 3",3, tree.findLCA(0,3,5));
+
+
+		DAG tree2=new DAG(6);
+		tree2.addEdge(1,2);
+		tree2.addEdge(1,3);
+		tree2.addEdge(1,4);
+		tree2.addEdge(2,4);
+		tree2.addEdge(3,4);
+		tree2.addEdge(3,5);
+		tree2.addEdge(4,5);
+
+
+        assertEquals("LCA (2,5) = 3",2,tree2.findLCA(1, 2, 5));
+		assertEquals(-1,tree2.findLCA(0, 2, 5));		//non-existent root
+		assertEquals(-1,tree2.findLCA(1, 2, 7));		//non-existent node 2
 	}
 	
 
